@@ -9,6 +9,8 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'pg', '~> 1.1'
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
+# CanCanCan is an authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access.
+gem 'cancancan'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
