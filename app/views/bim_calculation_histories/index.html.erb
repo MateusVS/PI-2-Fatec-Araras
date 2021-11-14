@@ -1,4 +1,51 @@
 <%= render 'menu' %>
 
-<h1>BimCalculationHistories#index</h1>
-<p>Find me in app/views/bim_calculation_histories/index.html.erb</p>
+<div class="container mt-4 table-responsive">
+  <% if @bim_calculation_histories.count > 0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">Altura</th>
+          <th scope="col" class="text-center">Peso</th>
+          <th scope="col" class="text-center">Pontuação</th>
+          <th scope="col" class="text-center">Resultado</th>
+          <th scope="col" class="text-center">Data</th>
+          <th scope="col" class="text-center">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for bim_calculation_history in @bim_calculation_histories %>
+          <tr>
+            <% @calc_pointing = bim_calculation(bim_calculation_history.height, bim_calculation_history.width) %>
+            <th scope="row" class="text-center">
+              <%= bim_calculation_history.id %>
+            </th>
+            <td class="text-center">
+              <%= formatted_float_with_comma(bim_calculation_history.height) %>
+            </td>
+            <td class="text-center">
+              <%= formatted_float_with_comma(bim_calculation_history.width) %>
+            </td>
+            <td class="text-center">
+              <%= formatted_float_with_comma(@calc_pointing) %>
+            </td>
+            <td class="text-center">
+              <%= bim_calculation_result(@calc_pointing) %>
+            </td>
+            <td class="text-center">
+              <%= formatted_created_at_date(bim_calculation_history.created_at) %>
+            </td>
+            <td class="text-center">
+              <%= link_to 'Excluir', { controller: "bim_calculation_histories", action: "destroy", id: bim_calculation_history.id }, method: :delete, data: { confirm: 'Tem certeza que deseja apagar esse registro?' }, class: 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info" role="alert">
+      Você ainda não possui histórico de cálculos.
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<% @calc_pointing = bim_calculation(@bim_calculation_history.height, @bim_calculation_history.width) %>
+
+var pointing = document.querySelector("#pointing");
+var description = document.querySelector("#description");
+
+pointing.innerHTML = '<%= formatted_float_with_comma(@calc_pointing) %>'
+description.innerHTML = '<%= bim_calculation_result(@calc_pointing) %>'

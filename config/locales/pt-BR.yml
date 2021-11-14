@@ -6,15 +6,18 @@ pt-BR:
         email: 'Email'
         password: 'Senha'
         password_confirmation: 'Confirmação da Senha'
+      bim_calculation_history:
+        height: 'Altura'
+        width: 'Peso'
     errors:
       models:
         user:
           attributes:
-            name: 
+            name:
               blank: 'não pode ser nulo.'
-            email: 
+            email:
               blank: 'não pode ser nulo.'
-            password: 
+            password:
               blank: 'não pode ser nulo.'
             password_confirmation:
               confirmation: 'é diferente da senha informada'

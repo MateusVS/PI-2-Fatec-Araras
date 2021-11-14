@@ -1,0 +1,38 @@
+<%= render 'menu' %>
+
+<div class="container mt-4 table-responsive">
+  <% if @specialists.count > 0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">Nome</th>
+          <th scope="col" class="text-center">Descrição</th>
+          <th scope="col" class="text-center">Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for specialist in @specialists %>
+          <tr>
+            <th scope="row" class="text-center">
+              <%= specialist.id %>
+            </th>
+            <td class="text-center">
+              <%= specialist.name %>
+            </td>
+            <td class="text-center">
+              <%= specialist.description %>
+            </td>
+            <td class="text-center">
+              <%= specialist.phone %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+   <% else %>
+    <div class="alert alert-info" role="alert">
+      Não existem especialistas cadastrados
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
 class BimCalculationHistory < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :bim_calculation_histories
 
   with_options presence: true do
     validates :user_id

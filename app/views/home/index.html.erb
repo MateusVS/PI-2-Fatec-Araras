@@ -1,4 +1,32 @@
 <%= render "menu" %>
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container mt-4">
+  <h2>Olá, <%= current_user.name %> </h2>
+  <div class="row mt-4">
+    <p>IMC é a sigla para Índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de Saúde para calcular o peso ideal de cada pessoa.</p>
+    <p>O índice é calculado da seguinte maneira: divide-se o peso do paciente pela sua altura elevada ao quadrado. Diz-se que o indivíduo tem peso normal quando o resultado do IMC está entre 18,5 e 24,9.</p>
+    <p>Quer descobrir seu IMC? Insira seu peso e sua altura nos campos abaixo e compare com os índices da tabela. Importante: siga os exemplos e use pontos como separadores.</p>
+  </div>
+
+  <div class="mt-5 align-items-center">
+    <%= form_for(@bim_calculation_history, remote: true, local: false, html: {class: "row g-3"} ) do |f| %>
+      <div class="col-auto">
+        <%= f.label :height, class: "form-label" %>
+      </div>
+      <div class="col-4">
+        <%= f.number_field :height, step: 0.01, min: 0, autofocus: true, autocomplete: "email", class: "form-control rounded" %>
+      </div>
+      <div class="col-auto">
+        <%= f.label :width, class: "form-label" %>
+      </div>
+      <div class="col-4">
+        <%= f.number_field :width, step: 0.01, min: 0, autofocus: true, autocomplete: "email", class: "form-control rounded" %>
+      </div>
+      <div class="col-md-auto col-sm-12 d-flex justify-content-center align-items-center">
+        <%= f.submit "Calcular", class: "btn btn-primary rounded" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "calc" %>
+</div>
